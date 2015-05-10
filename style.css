@@ -163,12 +163,12 @@ textarea:focus,
 }
 
 a {
-	color: #e5554e;
+	color: #4a8db8;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #333;
+	color: #63b13e;
 }
 
 p {
@@ -272,6 +272,10 @@ img {
 .featured-content img,
 .gallery img {
 	width: auto;
+}
+
+.site-header {
+	background-color:#fff;
 }
 
 /* ## Gallery
@@ -388,7 +392,7 @@ input[type="submit"],
 .footer-widgets input[type="reset"],
 .footer-widgets input[type="submit"],
 .footer-widgets .button {
-	background-color: #e5554e;
+	background-color: #4a8db8;
 	color: #fff;
 }
 
@@ -397,7 +401,7 @@ input:hover[type="button"],
 input:hover[type="reset"],
 input:hover[type="submit"],
 .button:hover {
-	background-color: #e5554e;
+	background-color: #4a8db8;
 	color: #fff;
 }
 
@@ -697,12 +701,14 @@ input[type="search"]:focus:-ms-input-placeholder { color:transparent; } /* oldIE
 }
 
 .entry-title a:hover {
-	color: #e5554e;
+	color: #4a8db8;
 }
 
 .widget-title {
 	font-size: 18px;
 	margin-bottom: 20px;
+	text-transform:uppercase;
+	border-bottom:1px grey solid;
 }
 
 .footer-widgets .widget-title {
@@ -879,7 +885,7 @@ img.alignright,
 }
 
 .site-header .wrap {
-	padding: 40px 0;
+	padding: 10px 0;
 }
 
 /* ## Title Area
@@ -943,6 +949,24 @@ img.alignright,
 	/*width: 800px;*/
 }
 
+/* Table press - Added 5/10/2015 MJG */
+
+.tablepress {
+	line-height:1.3em;
+}
+
+.tablepress .odd td {
+  	background-color: white;
+}
+
+/* Banner */
+.topPickBanner {
+	text-align:right;
+}
+
+.titleAndDescription {
+	background: #fff url("http://smartthermostatguide.com/wp-content/themes/SmartThermostatGuide2015-WPTheme/images/header.png") no-repeat fixed right;
+}
 
 /* # Site Navigation
 ---------------------------------------------------------------------------------------------------- */
@@ -968,7 +992,8 @@ img.alignright,
 .genesis-nav-menu a:hover,
 .genesis-nav-menu .current-menu-item > a,
 .genesis-nav-menu .sub-menu .current-menu-item > a:hover {
-	color: #e5554e;
+	color: #63b13e;
+	background-color:#fff;
 }
 
 .genesis-nav-menu .sub-menu {
@@ -1035,6 +1060,16 @@ img.alignright,
 	padding: 10px 0 0;
 }
 
+#menu-second-nav-bar {
+	height:30px;
+}
+
+#menu-second-nav-bar a {
+	font-size:10px;
+	color:#000;
+	text-transform:uppercase;
+}
+
 /* ## Site Header Navigation
 --------------------------------------------- */
 
@@ -1054,10 +1089,11 @@ img.alignright,
 --------------------------------------------- */
 
 .nav-primary {
-	background-color: #333;
+	background:#62b13f;
 }
 
 .nav-primary .genesis-nav-menu a {
+	text-transform:uppercase;
 	color: #fff;
 }
 
@@ -1068,16 +1104,23 @@ img.alignright,
 .nav-primary .genesis-nav-menu a:hover,
 .nav-primary .genesis-nav-menu .current-menu-item > a,
 .nav-primary .genesis-nav-menu .sub-menu .current-menu-item > a:hover {
-	color: #e5554e;
+	color: #4a8db8;  /* #4a8db8 blue  #e5554e red*/
 }
 
 /* ## Secondary Navigation
 --------------------------------------------- */
 
 .nav-secondary {
-	background-color: #fff;
+	background:#fff;
 }
 
+.nav-secondary a {
+	padding: 10px 24px;
+}
+
+.nav-secondary .menu-text {
+	color:black;
+}
 
 /* # Content Area
 ---------------------------------------------------------------------------------------------------- */
@@ -1172,7 +1215,7 @@ p.entry-meta {
 
 .archive-pagination li a:hover,
 .archive-pagination .active a {
-	background-color: #e5554e;
+	background-color: #4a8db8;
 }
 
 /* ## Comments
@@ -1270,6 +1313,9 @@ li.comment {
 	padding: 40px;
 }
 
+.rpwe-block a {
+	font-size:1.3em;
+}
 
 /* # Footer Widgets
 ---------------------------------------------------------------------------------------------------- */
@@ -1428,6 +1474,10 @@ li.comment {
 
 	.footer-widgets-1 {
 		margin-right: 30px;
+	}
+
+	.nav-secondary {
+		display:none;
 	}
 
 }
