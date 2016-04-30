@@ -151,3 +151,22 @@ function child_conditional_actions() {
  
     }
 }
+
+
+/* 4/30/2016 - Adding AmazonCPM (with Adsense fallback) to the bottom of every post */
+add_filter( 'the_content', 'my_content_filter' );
+
+function my_content_filter( $content ) {
+   if ( is_single() || is_page() ) {
+      $content .= '
+      <script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
+<script type="text/javascript" language="javascript">
+//<![CDATA[
+aax_getad_mpb({
+  "slot_uuid":"38276868-1efb-4932-b33d-c04502c4293b"
+});
+//]]>
+</script><br>';
+   }
+   return $content;
+}

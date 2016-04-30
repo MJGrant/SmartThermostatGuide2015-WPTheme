@@ -809,6 +809,7 @@ img.alignright,
 	text-align: center;
 }
 
+
 /* ## Featured Content
 --------------------------------------------- */
 
@@ -1310,7 +1311,7 @@ li.comment {
 .sidebar .widget {
 	background-color: #fff;
 	margin-bottom: 40px;
-	padding: 40px;
+	padding: 20px;
 }
 
 .rpwe-block a {
@@ -1439,7 +1440,7 @@ li.comment {
 
 /* # Media Queries
 ---------------------------------------------------------------------------------------------------- */
-
+ 
 @media only screen and (max-width: 1200px) {
 
 	.site-inner,
@@ -1701,3 +1702,5 @@ li.comment {
 	}
 
 }
+
+
