@@ -159,13 +159,15 @@ add_filter( 'the_content', 'my_content_filter' );
 function my_content_filter( $content ) {
    if ( is_single() || is_page() ) {
       $content .= '
-      <script type="text/javascript" language="javascript" src="//c.amazon-adsystem.com/aax2/getads.js"></script>
-<script type="text/javascript" language="javascript">
-//<![CDATA[
-aax_getad_mpb({
-  "slot_uuid":"38276868-1efb-4932-b33d-c04502c4293b"
-});
-//]]>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- STG_bottom_of_every_post_responsive -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1407541373557710"
+     data-ad-slot="9101222385"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script><br>';
    }
    return $content;
