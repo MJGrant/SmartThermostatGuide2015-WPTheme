@@ -40,7 +40,7 @@ function inject_clickable_header(){ ?>
 add_action('genesis_header','inject_clickable_header');
 */
 
-/* Top pick thermostat link for current month and current year - added early 2015 */
+/* Top pick thermostat link for current month and current year - added early 2015, amazon link updated 9/2016 */
 function clickable_header() {
     ?>
     <div id="titleAndDescription"><h1><a href="<?php echo get_bloginfo ( 'url' ); ?>"><?php echo get_bloginfo ( 'name' ); ?></a></h1>
@@ -48,7 +48,7 @@ function clickable_header() {
     <span id="topPickBanner">
     Top smart thermostat pick for <?php echo date('F Y');?>: <b>Ecobee3 Wi-Fi Thermostat</b> 
     (<a href="http://smartthermostatguide.com/ecobee3-smart-thermostat-review/">Review</a> 
-    | <a href="http://www.amazon.com/gp/product/B00NXRYUDA/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B00NXRYUDA&linkCode=as2&tag=stg14-20&linkId=3O7KCHAFFKOZDD7U">Shop</a>)</span>
+    | <a href="http://amzn.to/2cfeAQZ">Shop</a>)</span>
 
     <!-- <a href="http://smartthermostatguide.com/"><img src="http://smartthermostatguide.com/wp-content/uploads/2014/12/stg_banner_2014.png"></a>-->
     <?php
