@@ -5,7 +5,7 @@ include_once( get_template_directory() . '/lib/init.php' );
 //* Child theme (do not remove)
 define( 'CHILD_THEME_NAME', 'Smart Thermostat Guide Theme' );
 define( 'CHILD_THEME_URL', 'http://www.smartthermostatguide.com' );
-define( 'CHILD_THEME_VERSION', '1.1.13' );
+define( 'CHILD_THEME_VERSION', '1.1.14' );
 
 //* Enqueue Google Fonts
 add_action( 'wp_enqueue_scripts', 'genesis_sample_google_fonts' );
@@ -58,7 +58,9 @@ function clickable_header() {
     <div id="titleAndDescription" class="titleArea"><h1 class="no-bottom-margin"><a href="<?php echo get_bloginfo ( 'url' ); ?>"><?php echo get_bloginfo ( 'name' ); ?></a></h1>
     <p><?php echo get_bloginfo ( 'description' ); ?></p></div>
     <span id="topPickBanner">
-    Top smart thermostat pick for <?php echo date('F Y');?>: <b>Ecobee3 Wi-Fi Thermostat</b>
+    Top smart thermostat pick for <?php echo date('F Y');?>:
+    </br>
+    <b>ecobee3 Wi-Fi Thermostat</b>
     (<a href="http://smartthermostatguide.com/ecobee3-smart-thermostat-review/">Review</a>
     | <a href="http://amzn.to/2cfeAQZ">Shop</a>)</span>
 
