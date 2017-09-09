@@ -713,6 +713,8 @@ input[type="search"]:focus:-ms-input-placeholder { color:transparent; } /* oldIE
 	margin-bottom: 20px;
 	text-transform:uppercase;
 	border-bottom:1px grey solid;
+  text-align:center;
+  padding-bottom: 10px;
 }
 
 .footer-widgets .widget-title {
