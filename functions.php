@@ -5,7 +5,7 @@ include_once( get_template_directory() . '/lib/init.php' );
 //* Child theme (do not remove)
 define( 'CHILD_THEME_NAME', 'Smart Thermostat Guide Theme' );
 define( 'CHILD_THEME_URL', 'http://www.smartthermostatguide.com' );
-define( 'CHILD_THEME_VERSION', '1.1.14' );
+define( 'CHILD_THEME_VERSION', '1.1.15' );
 
 //* Enqueue Google Fonts
 add_action( 'wp_enqueue_scripts', 'genesis_sample_google_fonts' );

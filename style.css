@@ -1507,6 +1507,10 @@ li.comment {
     text-decoration:none;
 }
 
+.amazon-button:hover {
+  background-color:#77d3f4;
+}
+
 /* # Media Queries
 ---------------------------------------------------------------------------------------------------- */
 
