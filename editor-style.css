@@ -1,0 +1,23 @@
+/* Specific block styling */
+.pale-green-quote-box {
+    margin:6px;
+    padding:6px;
+    background:#d0e5c7;
+    max-width:400;
+    text-align:center;
+    display:inline-block;
+}
+.pale-green-quote-box:after {
+    clear:both;
+}
+.amazon-button {
+    background-color:#33bdef;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #057fd0;
+    display:inline-block;
+    color:#ffffff;
+    padding:6px 24px;
+    text-decoration:none;
+}

@@ -5,14 +5,12 @@ include_once( get_template_directory() . '/lib/init.php' );
 //* Child theme (do not remove)
 define( 'CHILD_THEME_NAME', 'Smart Thermostat Guide Theme' );
 define( 'CHILD_THEME_URL', 'http://www.smartthermostatguide.com' );
-define( 'CHILD_THEME_VERSION', '1.0.0' );
+define( 'CHILD_THEME_VERSION', '1.1.12' );
 
 //* Enqueue Google Fonts
 add_action( 'wp_enqueue_scripts', 'genesis_sample_google_fonts' );
 function genesis_sample_google_fonts() {
-
 	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700', array(), CHILD_THEME_VERSION );
-
 }
 
 //* Add HTML5 markup structure
@@ -30,6 +28,20 @@ add_theme_support( 'genesis-custom-header', array(
 	'height' => 166 //120 original
 ) );
 
+// Cache busting for child theme's style.css
+add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
+function my_theme_enqueue_styles() {
+
+    $parent_style = 'parent-style'; // This is 'twentyfifteen-style' for the Twenty Fifteen theme.
+
+    wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
+    wp_enqueue_style( 'child-style',
+        get_stylesheet_directory_uri() . '/style.css',
+        array( $parent_style ),
+        wp_get_theme()->get('Version')
+    );
+}
+
 //Add a clickable image as the header
 /*
 function inject_clickable_header(){ ?>
@@ -43,11 +55,11 @@ add_action('genesis_header','inject_clickable_header');
 /* Top pick thermostat link for current month and current year - added early 2015, amazon link updated 9/2016 */
 function clickable_header() {
     ?>
-    <div id="titleAndDescription"><h1><a href="<?php echo get_bloginfo ( 'url' ); ?>"><?php echo get_bloginfo ( 'name' ); ?></a></h1>
+    <div id="titleAndDescription" class="titleArea"><h1 class="no-bottom-margin"><a href="<?php echo get_bloginfo ( 'url' ); ?>"><?php echo get_bloginfo ( 'name' ); ?></a></h1>
     <p><?php echo get_bloginfo ( 'description' ); ?></p></div>
     <span id="topPickBanner">
-    Top smart thermostat pick for <?php echo date('F Y');?>: <b>Ecobee3 Wi-Fi Thermostat</b> 
-    (<a href="http://smartthermostatguide.com/ecobee3-smart-thermostat-review/">Review</a> 
+    Top smart thermostat pick for <?php echo date('F Y');?>: <b>Ecobee3 Wi-Fi Thermostat</b>
+    (<a href="http://smartthermostatguide.com/ecobee3-smart-thermostat-review/">Review</a>
     | <a href="http://amzn.to/2cfeAQZ">Shop</a>)</span>
 
     <!-- <a href="http://smartthermostatguide.com/"><img src="http://smartthermostatguide.com/wp-content/uploads/2014/12/stg_banner_2014.png"></a>-->
@@ -59,6 +71,8 @@ add_action('genesis_site_title','clickable_header' );
 //* Add support for 3-column footer widgets
 add_theme_support( 'genesis-footer-widgets', 3 );
 
+/* Add support for site-specific styles in editor */
+add_editor_style();
 
 /**********************************
  *
@@ -78,22 +92,22 @@ add_theme_support( 'genesis-footer-widgets', 3 );
 
 add_filter( 'genesis_seo_title', 'custom_header_inline_logo', 10, 3 );
 function custom_header_inline_logo( $title, $inside, $wrap ) {
- 
+
 	$logo = '<img src="' . get_stylesheet_directory_uri() . '/images/logo.png" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" title="' . esc_attr( get_bloginfo( 'name' ) ) . '" width="300" height="60" />';
- 
+
 	$inside = sprintf( '<a href="%s" title="%s">%s</a>', trailingslashit( home_url() ), esc_attr( get_bloginfo( 'name' ) ), $logo );
- 
+
 	// Determine which wrapping tags to use - changed is_home to is_front_page to fix Genesis bug
 	$wrap = is_front_page() && 'title' === genesis_get_seo_option( 'home_h1_on' ) ? 'h1' : 'p';
- 
+
 	// A little fallback, in case an SEO plugin is active - changed is_home to is_front_page to fix Genesis bug
 	$wrap = is_front_page() && ! genesis_get_seo_option( 'home_h1_on' ) ? 'h1' : $wrap;
- 
+
 	// And finally, $wrap in h1 if HTML5 & semantic headings enabled
 	$wrap = genesis_html5() && genesis_get_seo_option( 'semantic_headings' ) ? 'h1' : $wrap;
- 
+
 	return sprintf( '<%1$s %2$s>%3$s</%1$s>', $wrap, genesis_attr( 'site-title' ), $inside );
- 
+
 }
 
 // Remove the site description
@@ -148,7 +162,7 @@ function child_conditional_actions() {
 		remove_action( 'genesis_before_post_content', 'genesis_post_info' );
         /*remove_action( 'genesis_post_content', 'genesis_do_post_image' );*/
         add_action( 'genesis_post_content', 'the_excerpt' );
- 
+
     }
 }
 
@@ -172,3 +186,51 @@ function my_content_filter( $content ) {
    }
    return $content;
 }
+
+/* Custom styles for STG.com in the editor added 9/2017 */
+/* From this tutorial: http://www.wpbeginner.com/wp-tutorials/how-to-add-custom-styles-to-wordpress-visual-editor/ */
+function wpb_mce_buttons_2($buttons) {
+    array_unshift($buttons, 'styleselect');
+    return $buttons;
+}
+add_filter('mce_buttons_2', 'wpb_mce_buttons_2');
+
+/*
+* Callback function to filter the MCE settings
+*/
+
+function my_mce_before_init_insert_formats( $init_array ) {
+
+// Define the style_formats array
+
+    $style_formats = array(
+/*
+* Each array child is a format with it's own settings
+* Notice that each array has title, block, classes, and wrapper arguments
+* Title is the label which will be visible in Formats menu
+* Block defines whether it is a span, div, selector, or inline style
+* Classes allows you to define CSS classes
+* Wrapper whether or not to add a new block-level element around any selected elements
+*/
+        array(
+            'title' => 'Pale Green Quote Box',
+            'block' => 'span',
+            'classes' => 'pale-green-quote-box',
+            'wrapper' => true,
+
+        ),
+        array(
+            'title' => 'Amazon Button',
+            'block' => 'span',
+            'classes' => 'amazon-button',
+            'wrapper' => true,
+        ),
+    );
+    // Insert the array, JSON ENCODED, into 'style_formats'
+    $init_array['style_formats'] = json_encode( $style_formats );
+
+    return $init_array;
+
+}
+// Attach callback to 'tiny_mce_before_init'
+add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' );
