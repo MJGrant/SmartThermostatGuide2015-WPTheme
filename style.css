@@ -279,7 +279,6 @@ img {
 
 .site-header {
 	background-color:#fff;
-	/*background-image: url("smartthermostatguide.com/images/stg-header.jpg");*/
 }
 
 /* ## Gallery
@@ -976,7 +975,7 @@ img.alignright,
 }
 
 .titleArea {
-	background: #fff url("http://smartthermostatguide.com/wp-content/themes/SmartThermostatGuide2015-WPTheme/images/header.png") no-repeat fixed right;
+	background: #fff;
 }
 
 /* # Site Navigation
@@ -1181,11 +1180,11 @@ img.alignright,
 
 p.entry-meta {
 	font-size: 16px;
-	margin-bottom: 0;
+  margin-bottom:0 !important;
 }
 
 .entry-header .entry-meta {
-	margin-bottom: 24px;
+	margin-bottom: 0;
 }
 
 .entry-footer .entry-meta {
@@ -1460,6 +1459,16 @@ li.comment {
 
 .comparison-table-desktop {
 	display:block;
+}
+
+/*less space after published date */
+.entry-header .entry-meta {
+  margin-bottom:0;
+}
+
+.last-updated {
+  font-size:16px;
+  margin-bottom:18px;
 }
 
 /* Star rating plugin custom styling added 9/8/2017 */

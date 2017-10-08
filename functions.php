@@ -4,8 +4,8 @@ include_once( get_template_directory() . '/lib/init.php' );
 
 //* Child theme (do not remove)
 define( 'CHILD_THEME_NAME', 'Smart Thermostat Guide Theme' );
-define( 'CHILD_THEME_URL', 'http://www.smartthermostatguide.com' );
-define( 'CHILD_THEME_VERSION', '1.1.15' );
+define( 'CHILD_THEME_URL', 'https://www.smartthermostatguide.com' );
+define( 'CHILD_THEME_VERSION', '1.2.0' );
 
 //* Enqueue Google Fonts
 add_action( 'wp_enqueue_scripts', 'genesis_sample_google_fonts' );
@@ -42,6 +42,19 @@ function my_theme_enqueue_styles() {
     );
 }
 
+//Show last updated date before the post content
+function wpb_last_updated_date( $content ) {
+  $u_time = get_the_time('U');
+  $u_modified_time = get_the_modified_time('U');
+  if ($u_modified_time >= $u_time + 86400) {
+    $updated_date = get_the_modified_time('F jS, Y');
+    $custom_content .= '<p class="last-updated">Last updated on '. $updated_date . '</p>';
+  }
+  $custom_content .= $content;
+  return $custom_content;
+}
+add_filter( 'the_content', 'wpb_last_updated_date' );
+
 //Add a clickable image as the header
 /*
 function inject_clickable_header(){ ?>
@@ -61,7 +74,7 @@ function clickable_header() {
     Top smart thermostat pick for <?php echo date('F Y');?>:
     </br>
     <b>ecobee3 Wi-Fi Thermostat</b>
-    (<a href="http://smartthermostatguide.com/ecobee3-smart-thermostat-review/">Review</a>
+    (<a href="//smartthermostatguide.com/ecobee3-smart-thermostat-review/">Review</a>
     | <a href="http://amzn.to/2cfeAQZ">Shop</a>)</span>
 
     <!-- <a href="http://smartthermostatguide.com/"><img src="http://smartthermostatguide.com/wp-content/uploads/2014/12/stg_banner_2014.png"></a>-->
